@@ -102,6 +102,7 @@ public class TTS extends CordovaPlugin implements OnInitListener {
             // warm up the tts engine with an empty string
             HashMap<String, String> ttsParams = new HashMap<String, String>();
             ttsParams.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "");
+            ttsParams.put(TextToSpeech.Engine.KEY_FEATURE_NETWORK_SYNTHESIS, "true");
             tts.setLanguage(new Locale("en", "US"));
             tts.speak("", TextToSpeech.QUEUE_FLUSH, ttsParams);
 
@@ -192,6 +193,7 @@ public class TTS extends CordovaPlugin implements OnInitListener {
 
         HashMap<String, String> ttsParams = new HashMap<String, String>();
         ttsParams.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, callbackContext.getCallbackId());
+        ttsParams.put(TextToSpeech.Engine.KEY_FEATURE_NETWORK_SYNTHESIS, "true");
 
         String[] localeArgs = locale.split("-");
         tts.setLanguage(new Locale(localeArgs[0], localeArgs[1]));
